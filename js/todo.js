@@ -5,6 +5,7 @@ var taskInput = document.getElementById("new-task");
 var addButton = document.getElementById("add-button");
 var incompleteTasksHolder = document.querySelector("#incomplete-tasks ul");
 var completedTasksHolder = document.querySelector("#completed-tasks ul");
+var i = 0;
 
 //New Task List Item
 var createNewTaskElement = function (taskString) {
@@ -119,8 +120,8 @@ var taskIncomplete = function () {
 var bindTaskEvents = function (taskListItem, checkBoxEventHandler) {
   console.log("Bind list item events");
   //select taskListItem's children
-  var checkbox = taskListItem.querySelector("input[type=checkbox]");
-  var editbutton = taskListItem.querySelector("button.edit");
+  var checkBox = taskListItem.querySelector("input[type=checkbox]");
+  var editButton = taskListItem.querySelector("button.edit");
   var deleteButton = taskListItem.querySelector("button.delete");
   
   //bind edittask to editButton
@@ -133,9 +134,9 @@ var bindTaskEvents = function (taskListItem, checkBoxEventHandler) {
   checkBox.onchange = checkBoxEventHandler;
 };
 
-var enterKeyEvent = function () {
+var enterKeyEvent = function (e) {
   //Capture enter key as click
-  if (event.keyCode == 13) {
+  if (e.keyCode == 13) {
     console.log("Enter keypress");
     addButton.click();
   }
