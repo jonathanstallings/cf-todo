@@ -50,11 +50,10 @@ var addTask = function () {
     console.log("Add task. . .");
     //Create a new list item with the text from #new-task:
     var listItem = createNewTaskElement(taskInput.value);
-    
+
     //Append listItem to incompleteTasksHolder
     incompleteTasksHolder.appendChild(listItem);
-    bindTaskEvents(listItem, taskCompleted); //not yet defined
-    
+
     taskInput.value = "";
   } else {
     //Do nothing if taskInput is empty
@@ -65,13 +64,13 @@ var addTask = function () {
 //Edit an existing task
 var editTask = function (el) {
   console.log("Edit task. . .");
-  
+
   var listItem = el.parentNode;
   var editInput = listItem.querySelector("input[type=text]");
   var label = listItem.querySelector("label");
   var editButton = el;
   var containsClass = listItem.classList.contains("editMode");
-  
+
   //If the class of the parent is .editMode
   if (containsClass) {
     //Switch from .editMode
@@ -104,7 +103,6 @@ var taskCompleted = function (el) {
   //Append the task li to the #completed-tasks
   var listItem = el.parentNode;
   completedTasksHolder.appendChild(listItem);
-  // bindTaskEvents(listItem, taskIncomplete); //Not yet defined
 };
 
 //Mark a task as incompleted
@@ -113,25 +111,6 @@ var taskIncomplete = function (el) {
   //Append the task li to the #incomplete-tasks
   var listItem = el.parentNode;
   incompleteTasksHolder.appendChild(listItem);
-  // bindTaskEvents(listItem, taskCompleted);
-};
-
-//Bind events to list item's children
-var bindTaskEvents = function (taskListItem, checkBoxEventHandler) {
-  console.log("Bind list item events");
-  //select taskListItem's children
-  var checkBox = taskListItem.querySelector("input[type=checkbox]");
-  var editButton = taskListItem.querySelector("button.edit");
-  var deleteButton = taskListItem.querySelector("button.delete");
-  
-  //bind edittask to editButton
-  editButton.onclick = editTask;
-  
-  //bind deleteTask to delete button
-  deleteButton.onclick = deleteTask;
-  
-  //bind checkBoxEventHandler to checkbox
-  checkBox.onchange = checkBoxEventHandler;
 };
 
 //Determine event type and funnel to appropriate handler
@@ -150,7 +129,6 @@ var handleTaskEvents = function (e, checkBoxEventHandler) {
   } else if (checkbox) {
     checkBoxEventHandler(el);
   }
-
 };
 
 var enterKeyEvent = function (e) {
@@ -189,25 +167,3 @@ incompleteTasksHolder.addEventListener("click", function(e) {
 completedTasksHolder.addEventListener("click", function(e) {
   handleTaskEvents(e, taskIncomplete);
 }, false);
-
-//Test vanilla JavaScript event properties
-var testButton = document.getElementById("test-button");
-var myEvent = "";
-testButton.addEventListener('click', function (e) {
-  e.preventDefault();
-  console.log(e);
-  myEvent = e;
-  myEl = this;
-});
-
-// //cycle over the incompleteTasksHolder ul list items
-// for (i = 0; i < incompleteTasksHolder.children.length; i++) {
-//   //bind events to list item's children (taskCompleted)
-//   bindTaskEvents(incompleteTasksHolder.children[i], taskCompleted);
-// }
-
-// //cycle over the completedTasksHolder ul list items
-// for (i = 0; i < completedTasksHolder.children.length; i++) {
-//   //bind events to list item's children (taskIncomplete)
-//   bindTaskEvents(completedTasksHolder.children[i], taskIncomplete);
-// }
