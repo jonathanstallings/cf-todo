@@ -1,45 +1,39 @@
 //Goal: Add interactivity to Todo app
 
-//Declare Variables
+//Cache DOM Element Variables
 var taskInput = document.getElementById("new-task");
 var addButton = document.getElementById("add-button");
 var incompleteTasksHolder = document.querySelector("#incomplete-tasks ul");
 var completedTasksHolder = document.querySelector("#completed-tasks ul");
-var i = 0;
 
 //New Task List Item
 var createNewTaskElement = function (taskString) {
-  //Create list item
+  //Create necessary elements
   var listItem = document.createElement("li");
-  //input(checkbox)
   var checkBox = document.createElement("input"); //checkbox
-  //label
   var label = document.createElement("label");
-  //input(text)
   var editInput = document.createElement("input"); //text
-  //button.edit
   var editButton = document.createElement("button");
-  //button.delete
   var deleteButton = document.createElement("button");
-  
-  //Each element needs modifying
+
+  //Modify elements
   checkBox.type = "checkbox";
   editInput.type = "text";
-  
+
   editButton.textContent = "Edit";
   editButton.className = "edit";
   deleteButton.textContent = "Delete";
   deleteButton.className = "delete";
-  
+
   label.textContent = taskString;
-  
-  //Each elemetn needs appending
+
+  //Append elements to listItem
   listItem.appendChild(checkBox);
   listItem.appendChild(label);
   listItem.appendChild(editInput);
   listItem.appendChild(editButton);
   listItem.appendChild(deleteButton);
-  
+
   return listItem;
 };
 
@@ -149,6 +143,16 @@ taskInput.addEventListener("keypress", enterKeyEvent);
 
 //New Idea: ability to save edits to incomplted task items with enter keypress
 
+//Set click handler on incompleteTasksHolder
+incompleteTasksHolder.addEventListener("click", function(e) {
+  handleTaskEvents(e, taskCompleted);
+}, false);
+
+//Set click handler on completedTasksHolder
+completedTasksHolder.addEventListener("click", function(e) {
+  handleTaskEvents(e, taskIncomplete);
+}, false);
+
 // //Set up event listener to call taskCompleted with event delegation
 // if (incompleteTasksHolder.addEventListener) { // If event listeners work
 //   incompleteTasksHolder.addEventListener('click', function(e) {
@@ -159,11 +163,3 @@ taskInput.addEventListener("keypress", enterKeyEvent);
 //     taskCompleted(e);
 //   });
 // }
-
-incompleteTasksHolder.addEventListener("click", function(e) {
-  handleTaskEvents(e, taskCompleted);
-}, false);
-
-completedTasksHolder.addEventListener("click", function(e) {
-  handleTaskEvents(e, taskIncomplete);
-}, false);
