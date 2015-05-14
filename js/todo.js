@@ -115,13 +115,15 @@ var handleTaskEvents = function (e, checkBoxEventHandler) {
   var deleteButton = el.matches("button.delete");
 
   console.log(el);
-
-  if (editButton) {
+  
+  if (e.type == "dblclick" && el.matches("label")) {
+    el.parentNode.querySelector("button.edit").click();
+  } else if (checkbox) {
+    checkBoxEventHandler(el);
+  } else if (editButton) {
     editTask(el);
   } else if (deleteButton) {
     deleteTask(el);
-  } else if (checkbox) {
-    checkBoxEventHandler(el);
   }
 };
 
@@ -152,6 +154,12 @@ incompleteTasksHolder.addEventListener("click", function(e) {
 completedTasksHolder.addEventListener("click", function(e) {
   handleTaskEvents(e, taskIncomplete);
 }, false);
+
+//Set click handler on incompleteTasksHolder
+incompleteTasksHolder.addEventListener("dblclick", function(e) {
+  handleTaskEvents(e, taskCompleted);
+}, false);
+
 
 // //Set up event listener to call taskCompleted with event delegation
 // if (incompleteTasksHolder.addEventListener) { // If event listeners work
