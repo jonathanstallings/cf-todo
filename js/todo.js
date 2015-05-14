@@ -1,6 +1,9 @@
 //Goal: Add interactivity to Todo app
 
-//Cache DOM Element Variables
+/*************************
+Cache DOM Elements
+**************************/
+
 var taskInput = document.getElementById("new-task");
 var addButton = document.getElementById("add-button");
 var incompleteTasksHolder = document.querySelector("#incomplete-tasks ul");
@@ -107,7 +110,7 @@ var taskIncomplete = function (el) {
   incompleteTasksHolder.appendChild(listItem);
 };
 
-//Determine event type and funnel to appropriate handler
+//Examine event and funnel to appropriate handler
 var handleTaskEvents = function (e, checkBoxEventHandler) {
   var el = e.target;
   var checkbox = el.matches("input[type=checkbox]");
@@ -135,7 +138,9 @@ var enterKeyEvent = function (e) {
   }
 };
 
-/*Event Handlers**********************/
+/*************************
+Event Listeners
+**************************/
 
 //Set the click handler to the addTask function
 addButton.addEventListener("click", addTask);
@@ -150,15 +155,16 @@ incompleteTasksHolder.addEventListener("click", function(e) {
   handleTaskEvents(e, taskCompleted);
 }, false);
 
+//Set double-click handler on incompleteTasksHolder
+incompleteTasksHolder.addEventListener("dblclick", handleTaskEvents, false);
+
 //Set click handler on completedTasksHolder
 completedTasksHolder.addEventListener("click", function(e) {
   handleTaskEvents(e, taskIncomplete);
 }, false);
 
-//Set click handler on incompleteTasksHolder
-incompleteTasksHolder.addEventListener("dblclick", function(e) {
-  handleTaskEvents(e, taskCompleted);
-}, false);
+//Set double-click handler on completedTasksHolder
+completedTasksHolder.addEventListener("dblclick", handleTaskEvents, false);
 
 
 // //Set up event listener to call taskCompleted with event delegation
