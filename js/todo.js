@@ -99,21 +99,21 @@ var deleteTask = function (el) {
 };
 
 //Mark a task as completed
-var taskCompleted = function () {
+var taskCompleted = function (el) {
   console.log("Task completed. . .");
   //Append the task li to the #completed-tasks
-  var listItem = this.parentNode;
+  var listItem = el.parentNode;
   completedTasksHolder.appendChild(listItem);
-  bindTaskEvents(listItem, taskIncomplete); //Not yet defined
+  // bindTaskEvents(listItem, taskIncomplete); //Not yet defined
 };
 
 //Mark a task as incompleted
-var taskIncomplete = function () {
+var taskIncomplete = function (el) {
   console.log("Task incomplete. . .");
   //Append the task li to the #incomplete-tasks
-  var listItem = this.parentNode;
+  var listItem = el.parentNode;
   incompleteTasksHolder.appendChild(listItem);
-  bindTaskEvents(listItem, taskCompleted);
+  // bindTaskEvents(listItem, taskCompleted);
 };
 
 //Bind events to list item's children
@@ -182,7 +182,13 @@ taskInput.addEventListener("keypress", enterKeyEvent);
 //   });
 // }
 
-incompleteTasksHolder.addEventListener("click", handleTaskEvents, false);
+incompleteTasksHolder.addEventListener("click", function(e) {
+  handleTaskEvents(e, taskCompleted);
+}, false);
+
+completedTasksHolder.addEventListener("click", function(e) {
+  handleTaskEvents(e, taskIncomplete);
+}, false);
 
 //Test vanilla JavaScript event properties
 var testButton = document.getElementById("test-button");
