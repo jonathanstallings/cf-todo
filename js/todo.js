@@ -81,7 +81,7 @@ var editTask = function () {
   } else {
     //Switch to .editMode
     //input value becomes the label's text
-    editInput.value = lable.textContent;
+    editInput.value = label.textContent;
     editButton.textContent = "Save";
   }
   //Toggle .editMode
@@ -99,7 +99,7 @@ var deleteTask = function () {
 };
 
 //Mark a task as completed
-var taskCompleted = function () {
+var taskCompleted = function (e) {
   console.log("Task completed. . .");
   //Append the task li to the #completed-tasks
   var listItem = this.parentNode;
@@ -151,6 +151,17 @@ addButton.addEventListener("click", addTask);
 taskInput.addEventListener("keypress", enterKeyEvent);
 
 //New Idea: ability to save edits to incomplted task items with enter keypress
+
+//Set up event listener to call taskCompleted with event delegation
+if (incompleteTasksHolder.addEventListener) { // If event listeners work
+  incompleteTasksHolder.addEventListener('click', function(e) {
+    taskCompleted(e);
+  }, false);
+} else { //Otherwise use old IE model
+  incompleteTasksHolder.attachEvent('onclick', function(e) {
+    taskCompleted(e);
+  });
+}
 
 //cycle over the incompleteTasksHolder ul list items
 for (i = 0; i < incompleteTasksHolder.children.length; i++) {
