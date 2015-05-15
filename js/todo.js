@@ -119,9 +119,7 @@ var handleTaskEvents = function (e, checkBoxEventHandler) {
 
   console.log(el);
   
-  if (e.type == "dblclick" && el.matches("label")) {
-    el.parentNode.querySelector("button.edit").click();
-  } else if (checkbox) {
+  if (checkbox) {
     checkBoxEventHandler(el);
   } else if (editButton) {
     editTask(el);
@@ -135,6 +133,16 @@ var enterKeyEvent = function (e) {
   if (e.keyCode == 13) {
     console.log("Enter keypress");
     addButton.click();
+  }
+};
+
+var dblclickEvent = function (e) {
+  //Body
+  var el = e.target;
+  var editButton = el.parentNode.querySelector("button.edit");
+  
+  if (el.matches("label")) {
+    editButton.click();
   }
 };
 
@@ -156,7 +164,7 @@ incompleteTasksHolder.addEventListener("click", function(e) {
 }, false);
 
 //Set double-click handler on incompleteTasksHolder
-incompleteTasksHolder.addEventListener("dblclick", handleTaskEvents, false);
+incompleteTasksHolder.addEventListener("dblclick", dblclickEvent, false);
 
 //Set click handler on completedTasksHolder
 completedTasksHolder.addEventListener("click", function(e) {
@@ -164,7 +172,7 @@ completedTasksHolder.addEventListener("click", function(e) {
 }, false);
 
 //Set double-click handler on completedTasksHolder
-completedTasksHolder.addEventListener("dblclick", handleTaskEvents, false);
+completedTasksHolder.addEventListener("dblclick", dblclickEvent, false);
 
 
 // //Set up event listener to call taskCompleted with event delegation
