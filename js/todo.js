@@ -9,8 +9,13 @@ var addButton = document.getElementById("add-button");
 var incompleteTasksHolder = document.querySelector("#incomplete-tasks ul");
 var completedTasksHolder = document.querySelector("#completed-tasks ul");
 
-//New Task List Item
+
+/*************************
+Functions
+**************************/
+
 var createNewTaskElement = function (taskString) {
+  //New Task List Item
   //Create necessary elements
   var listItem = document.createElement("li");
   var checkBox = document.createElement("input"); //checkbox
@@ -40,8 +45,8 @@ var createNewTaskElement = function (taskString) {
   return listItem;
 };
 
-//Add a new task
 var addTask = function () {
+  //Add a new task
   //Check to see if taskInput has a value
   if (taskInput.value) {
     console.log("Add task. . .");
@@ -58,8 +63,8 @@ var addTask = function () {
   }
 };
 
-//Edit an existing task
 var editTask = function (el) {
+  //Edit an existing task
   console.log("Edit task. . .");
 
   var listItem = el.parentNode;
@@ -84,8 +89,8 @@ var editTask = function (el) {
   listItem.classList.toggle("editMode");
 };
 
-//Delete an existing task
 var deleteTask = function (el) {
+  //Delete an existing task
   console.log("Delete task. . .");
   var listItem = el.parentNode;
   var ul = listItem.parentNode;
@@ -94,30 +99,28 @@ var deleteTask = function (el) {
   ul.removeChild(listItem);
 };
 
-//Mark a task as completed
 var taskCompleted = function (el) {
+  //Mark a task as completed
   console.log("Task completed. . .");
   //Append the task li to the #completed-tasks
   var listItem = el.parentNode;
   completedTasksHolder.appendChild(listItem);
 };
 
-//Mark a task as incompleted
 var taskIncomplete = function (el) {
+  //Mark a task as incompleted
   console.log("Task incomplete. . .");
   //Append the task li to the #incomplete-tasks
   var listItem = el.parentNode;
   incompleteTasksHolder.appendChild(listItem);
 };
 
-//Examine event and funnel to appropriate handler
-var handleTaskEvents = function (e, checkBoxEventHandler) {
+var taskEventHandler = function (e, checkBoxEventHandler) {
+  //Examine event and send to appropriate handler
   var el = e.target;
   var checkbox = el.matches("input[type=checkbox]");
   var editButton = el.matches("button.edit");
   var deleteButton = el.matches("button.delete");
-
-  console.log(el);
   
   if (checkbox) {
     checkBoxEventHandler(el);
@@ -131,7 +134,13 @@ var handleTaskEvents = function (e, checkBoxEventHandler) {
 var enterKeyEvent = function (e) {
   //Capture enter key as click
   if (e.keyCode == 13) {
-    console.log("Enter keypress");
+    addButton.click();
+  }
+};
+
+var enterKeyEvent = function (e) {
+  //Capture enter key as click
+  if (e.keyCode == 13) {
     addButton.click();
   }
 };
@@ -150,29 +159,29 @@ var dblclickEvent = function (e) {
 Event Listeners
 **************************/
 
-//Set the click handler to the addTask function
+//Set click handler on add button
 addButton.addEventListener("click", addTask);
 
-//Set the keypress handler from taskInput to the addTask function
+//Set keypress handler on new-task input
 taskInput.addEventListener("keypress", enterKeyEvent);
 
-//New Idea: ability to save edits to incomplted task items with enter keypress
+//Set keypress handlers on each task holder
+incompleteTasksHolder.addEventListener("keypress", enterKeyEvent);
+completedTasksHolder.addEventListener("keypress", enterKeyEvent);
 
 //Set click handler on incompleteTasksHolder
 incompleteTasksHolder.addEventListener("click", function(e) {
-  handleTaskEvents(e, taskCompleted);
-}, false);
-
-//Set double-click handler on incompleteTasksHolder
-incompleteTasksHolder.addEventListener("dblclick", dblclickEvent, false);
+  taskEventHandler(e, taskCompleted);
+});
 
 //Set click handler on completedTasksHolder
 completedTasksHolder.addEventListener("click", function(e) {
-  handleTaskEvents(e, taskIncomplete);
-}, false);
+  taskEventHandler(e, taskIncomplete);
+});
 
-//Set double-click handler on completedTasksHolder
-completedTasksHolder.addEventListener("dblclick", dblclickEvent, false);
+//Set double-click handlers on each task holder
+incompleteTasksHolder.addEventListener("dblclick", dblclickEvent);
+completedTasksHolder.addEventListener("dblclick", dblclickEvent);
 
 
 // //Set up event listener to call taskCompleted with event delegation
