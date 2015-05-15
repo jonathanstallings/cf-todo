@@ -131,17 +131,20 @@ var taskEventHandler = function (e, checkBoxEventHandler) {
   }
 };
 
-var enterKeyEvent = function (e) {
+var addTaskEnterKeyEvent = function (e) {
   //Capture enter key as click
   if (e.keyCode == 13) {
     addButton.click();
   }
 };
 
-var enterKeyEvent = function (e) {
+var editTaskEnterKeyEvent = function (e) {
   //Capture enter key as click
-  if (e.keyCode == 13) {
-    addButton.click();
+  var el = e.target;
+  var editButton = el.parentNode.querySelector("button.edit");
+  
+  if (e.keyCode == 13 && el.matches("input[type=text]")) {
+    editButton.click();
   }
 };
 
@@ -163,11 +166,11 @@ Event Listeners
 addButton.addEventListener("click", addTask);
 
 //Set keypress handler on new-task input
-taskInput.addEventListener("keypress", enterKeyEvent);
+taskInput.addEventListener("keypress", addTaskEnterKeyEvent);
 
 //Set keypress handlers on each task holder
-incompleteTasksHolder.addEventListener("keypress", enterKeyEvent);
-completedTasksHolder.addEventListener("keypress", enterKeyEvent);
+incompleteTasksHolder.addEventListener("keypress", editTaskEnterKeyEvent);
+completedTasksHolder.addEventListener("keypress", editTaskEnterKeyEvent);
 
 //Set click handler on incompleteTasksHolder
 incompleteTasksHolder.addEventListener("click", function(e) {
