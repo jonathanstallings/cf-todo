@@ -100,10 +100,6 @@ li> div {
   -webkit-user-select: text;
 }
 
-li > input[type='text'] {
-  width: 282px;
-}
-
 li > .delete:hover {
   color: #CF2323;
   text-shadow: 1px 1px 1px black, 5px 5px 8px rgb(30, 30, 30);
@@ -118,16 +114,4 @@ li > .delete:hover {
 #completed-tasks div {
   text-decoration: line-through;
   color: #888
-}
-
-li input[type='text'] {
-  display: none;
-}
-
-li.editMode input[type='text'] {
-  display: block;
-}
-
-li.editMode label {
-  display: none;
 }
