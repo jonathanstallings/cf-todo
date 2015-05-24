@@ -162,8 +162,8 @@ addButton.addEventListener("click", addTask);
 taskInput.addEventListener("keypress", addTaskEnterKeyEvent);
 
 //Set keypress handlers on each task holder
-incompleteTasksHolder.addEventListener("keypress", editTaskEnterKeyEvent);
-completedTasksHolder.addEventListener("keypress", editTaskEnterKeyEvent);
+// incompleteTasksHolder.addEventListener("keypress", editTaskEnterKeyEvent);
+// completedTasksHolder.addEventListener("keypress", editTaskEnterKeyEvent);
 
 //Set click handler on incompleteTasksHolder
 incompleteTasksHolder.addEventListener("click", function(e) {
@@ -176,5 +176,5 @@ completedTasksHolder.addEventListener("click", function(e) {
 });
 
 //Set double-click handlers on each task holder
-incompleteTasksHolder.addEventListener("dblclick", dblclickEvent);
-completedTasksHolder.addEventListener("dblclick", dblclickEvent);
+// incompleteTasksHolder.addEventListener("dblclick", dblclickEvent);
+// completedTasksHolder.addEventListener("dblclick", dblclickEvent);
