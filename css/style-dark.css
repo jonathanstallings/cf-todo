@@ -39,6 +39,7 @@ button {
 
 button:hover {
   color: white;
+  text-shadow: 1px 1px 1px black, 5px 5px 8px rgb(30, 30, 30);
 }
 
 h3,
@@ -50,6 +51,7 @@ label[for='new-task'] {
   padding: 30px 0 10px;
   margin: 0;
   text-transform: uppercase;
+  text-shadow: 1px 1px 1px black, 5px 5px 8px rgb(30, 30, 30);
 }
 
 input[type="text"] {
@@ -90,7 +92,6 @@ li > input[type='checkbox'] {
   top: 12px;
 }
 
-li > label,
 li> div {
   font-size: 18px;
   line-height: 40px;
@@ -105,9 +106,16 @@ li > input[type='text'] {
 
 li > .delete:hover {
   color: #CF2323;
+  text-shadow: 1px 1px 1px black, 5px 5px 8px rgb(30, 30, 30);
 }
 
-#completed-tasks label {
+#incomplete-tasks li:hover,
+#completed-tasks li:hover {
+  background-color: rgb(60, 60, 60)
+}
+
+
+#completed-tasks div {
   text-decoration: line-through;
   color: #888
 }
