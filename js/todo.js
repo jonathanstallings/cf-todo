@@ -98,6 +98,17 @@ var addTaskEnterKeyEvent = function (e) {
 };
 
 
+var loseFocus = function (e) {
+  // body...
+  if (e.keyCode == 13) {
+    var el = e.target;
+    
+    if (el.matches("div")) {
+      el.blur();
+    }
+  }
+};
+
 /*************************
 Event Listeners
 **************************/
@@ -117,3 +128,6 @@ incompleteTasksHolder.addEventListener("click", function(e) {
 completedTasksHolder.addEventListener("click", function(e) {
   taskEventHandler(e, taskIncomplete);
 });
+
+//Set keypress handler on incompleteTasksHolder
+incompleteTasksHolder.addEventListener("keypress", loseFocus);
