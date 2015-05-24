@@ -33,8 +33,11 @@ button {
   color: #888;
   font-size: 15px;
   width: 60px;
-  margin: 10px 0 0;
   cursor: pointer;
+}
+
+button#add-button {
+  margin: 10px 0 0;
 }
 
 button:hover {
@@ -81,13 +84,13 @@ input#new-task {
 li {
   overflow: hidden;
   padding: 20px 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid rgb(120, 120, 120);
 }
 
 li > input[type='checkbox'] {
   margin: 0 10px;
   position: relative;
-  top: 15px;
+  top: 12px;
 }
 
 li > label {
