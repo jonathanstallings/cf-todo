@@ -4,7 +4,7 @@
     <title>Todo App</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width">
-    <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+<!--     <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'> -->
     <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
     <link rel="stylesheet" href="css/style-dark.css" type="text/css">
   </head>
@@ -12,8 +12,11 @@
     <main>
       <section id="add-tasks">
         <label for="new-task">Add Item</label>
-        <input type="text" id="new-task">
-        <button id="add-button">Add</button>
+        <div id="container">
+          <input type="text" id="new-task">
+          <button id="add-button">Add</button>
+          <div style="clear: both"></div>
+        </div>
       </section>
       <section id="incomplete-tasks">
         <h3>Todo</h3>

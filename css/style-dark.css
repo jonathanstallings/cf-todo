@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Abel);
+
 body {
   font-family: 'Abel', sans-serif;
   background-color: rgb(50, 50, 50);
@@ -22,6 +24,12 @@ li * {
 li, h3 {
   clear: both;
   list-style: none;
+}
+
+#add-tasks div#container {
+  padding: 20px 0 20px 20px;
+  background-color: rgb(40, 40, 40);
+  border-bottom: 1px solid rgb(120, 120, 120);
 }
 
 input, button {
@@ -76,7 +84,7 @@ input[type='text']:focus {
 
 label[for='new-task'] {
   display: block;
-  margin: 0 0 20px;
+/*  margin: 0 0 20px;*/
 }
 
 input#new-task {
