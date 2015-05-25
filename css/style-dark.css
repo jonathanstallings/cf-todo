@@ -132,23 +132,11 @@ Media Queries
   }
   
   main {
-/*    width: 80%;*/
     min-width: 245px;
     margin: 0 auto;
+    width: 90%;
+    margin: 10px;
   }
-  
-/*  button {
-    background: none;
-    border: 0px;
-    color: #888;
-    font-size: 15px;
-    width: 60px;
-    cursor: pointer;
-    padding: 8px 6px;
-    float: right;
-    position: relative;
-    right: 1px;
-  }*/
   
   input#new-task {
     width: 65%;
