@@ -80,6 +80,7 @@ li {
   overflow: hidden;
   padding: 20px 0;
   border-bottom: 1px solid #eee;
+  background-color: rgb(40, 40, 40)
 }
 
 li > input[type='checkbox'] {

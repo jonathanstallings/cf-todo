@@ -23,7 +23,7 @@ var createNewTaskElement = function (taskString) {
   //Modify elements
   checkBox.type = "checkbox";
   div.setAttribute("contenteditable", "true");
-  deleteButton.textContent = "Delete";
+  deleteButton.textContent = "X";
   deleteButton.className = "delete";
 
   div.textContent = taskString;
