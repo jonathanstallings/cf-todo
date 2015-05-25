@@ -17,6 +17,13 @@ ul {
   padding: 0;
 }
 
+li {
+  overflow: hidden;
+  padding: 5px 0;
+  border-bottom: 1px solid rgb(120, 120, 120);
+  background-color: rgb(40, 40, 40);
+}
+
 li * {
   float: left;
 }
@@ -24,12 +31,6 @@ li * {
 li, h3 {
   clear: both;
   list-style: none;
-}
-
-#add-tasks div#container {
-  padding: 20px 0 20px 20px;
-  background-color: rgb(40, 40, 40);
-  border-bottom: 1px solid rgb(120, 120, 120);
 }
 
 input, button {
@@ -56,7 +57,6 @@ button:hover {
 
 h3,
 label[for='new-task'] {
-/*  color: #333;*/
   font-weight: 700;
   font-size: 15px;
   border-bottom: 2px solid rgb(200, 200, 200);
@@ -64,6 +64,10 @@ label[for='new-task'] {
   margin: 0;
   text-transform: uppercase;
   text-shadow: 1px 1px 1px black, 5px 5px 8px rgb(30, 30, 30);
+}
+
+label[for='new-task'] {
+  display: block;
 }
 
 input[type="text"] {
@@ -82,21 +86,9 @@ input[type='text']:focus {
   color: black;
 }
 
-label[for='new-task'] {
-  display: block;
-/*  margin: 0 0 20px;*/
-}
-
 input#new-task {
   float: left;
   width: 80%;
-}
-
-li {
-  overflow: hidden;
-  padding: 5px 0;
-  border-bottom: 1px solid rgb(120, 120, 120);
-  background-color: rgb(40, 40, 40);
 }
 
 li > input[type='checkbox'] {
@@ -106,7 +98,7 @@ li > input[type='checkbox'] {
   cursor: pointer;
 }
 
-li> div {
+li > div {
   font-size: 18px;
   line-height: 40px;
   width: 75%;
@@ -123,11 +115,16 @@ li > .delete:hover {
   text-shadow: 1px 1px 1px black, 5px 5px 8px rgb(30, 30, 30);
 }
 
+#add-tasks div.container {
+  padding: 20px 0 20px 20px;
+  background-color: rgb(40, 40, 40);
+  border-bottom: 1px solid rgb(120, 120, 120);
+}
+
 #incomplete-tasks li:hover,
 #completed-tasks li:hover {
   background-color: rgb(60, 60, 60)
 }
-
 
 #completed-tasks div {
   text-decoration: line-through;
@@ -156,11 +153,7 @@ Media Queries
   }
   
   li> div {
-    font-size: 18px;
-    line-height: 40px;
     width: 50%;
-    padding: 0 0 0 11px;
-    -webkit-user-select: text;
   }
   
 }
