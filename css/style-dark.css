@@ -1,5 +1,11 @@
 @import url(http://fonts.googleapis.com/css?family=Abel);
 
+.clearfix:after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+
 body {
   font-family: 'Abel', sans-serif;
   background-color: rgb(50, 50, 50);
