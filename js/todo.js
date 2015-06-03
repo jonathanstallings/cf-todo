@@ -102,7 +102,8 @@ var tasksHolderEnterKeyEvent = function (e) {
   // body...
   if (e.keyCode == 13) {
     var el = e.target;
-    
+
+    e.preventDefault();
     if (el.matches("div")) {
       el.blur();
     }
