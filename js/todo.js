@@ -37,18 +37,19 @@ var createNewTaskElement = function (taskString) {
 };
 
 var addTask = function () {
-  //Add a new task
+    //Add a new task
+    taskInputText = taskInput.value.trim()
 
-  if (taskInput.value) {
-    //Create a new list item with the text from #new-task:
-    var listItem = createNewTaskElement(taskInput.value);
+    if (taskInputText) {
+        //Create a new list item with the text from #new-task:
+        var listItem = createNewTaskElement(taskInputText);
 
-    //Append listItem to incompleteTasksHolder
-    incompleteTasksHolder.appendChild(listItem);
+        //Append listItem to incompleteTasksHolder
+        incompleteTasksHolder.appendChild(listItem);
 
-    //Clear taskInput text
-    taskInput.value = "";
-  }
+        //Clear taskInput text
+        taskInput.value = "";
+    }
 };
 
 var deleteTask = function (el) {
